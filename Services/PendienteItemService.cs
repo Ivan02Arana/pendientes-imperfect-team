@@ -24,7 +24,7 @@ namespace ListaWeb.Services
         
         public bool AgregarPendiente(PendienteItem pendiente)
         {
-            _context.Pendientes.Add(pendiente);
+
 
 
 
@@ -38,7 +38,7 @@ namespace ListaWeb.Services
         public IEnumerable<PendienteItem> GetPendientesIncompletos()
         {
 
-            return _context.Pendientes.Where( p => p.EstaHecha == false);
+            return null;
                              
 
 
@@ -52,23 +52,22 @@ namespace ListaWeb.Services
            /// Buscar el id de la tarea
            /// utilizar el método de LINQ FirstOrDefault
            /// Regresa el pendiente si lo encontró null si no
-           var pendiente = _context.Pendientes.FirstOrDefault(p => p.Id == id);
+
 
             /// 2
             /// Verificar que el pendiente no sea null en ese caso regresar false
-            if (pendiente == null){
-                return false;
-            }
+          
 
             /// 3
             /// Marcar como hecho el pendiente
-            pendiente.EstaHecha = true;
+
 
 
             /// 4
             /// Guardar el pendiente Modificado
 
 
+            // no quitar estas dos líneas
 
             var saveResult =  _context.SaveChanges();
             return saveResult == 1; // Solo un registro se debió haber actualizado
